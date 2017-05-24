@@ -85,5 +85,7 @@ public class Deck {
         // have been used.
     }
 
-
+    public Card[] getDeck() {
+        return deck;
+    }
 } // end class Deck
