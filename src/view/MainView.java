@@ -8,7 +8,7 @@ public class MainView extends JFrame {
 
 	    private final static int WINDOW_WIDTH = 400;
 	    private final static int WINDOW_HEIGHT = 222;
-	    private final String MENU_TITLE = "PokmonGOBack";
+	    private final String MENU_TITLE = "PokemonGOBack";
 	    public JButton startGameButton;
 
 
