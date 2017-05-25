@@ -9,7 +9,7 @@ import org.junit.runners.Suite.SuiteClasses;
  */
 
 @RunWith(Suite.class)
-@SuiteClasses({CardCollectionTest.class, DeckTest.class, PokemonTest.class})
+@SuiteClasses({CardCollectionTest.class, DeckTest.class, PokemonTest.class, GameEngineTest.class, AttackTest.class })
 
 public class TestSuite{
 }
