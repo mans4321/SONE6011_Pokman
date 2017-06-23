@@ -10,7 +10,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 
-public class InfoView extends JPanel implements Coordinate  {
+public class InfoView extends JPanel implements CoordinateView  {
 
 	public int x = 1005;
 	public int y = 5 ;
@@ -21,8 +21,8 @@ public class InfoView extends JPanel implements Coordinate  {
 	private JTextArea T_cardInfo;
 	private JTextArea T_communication;
 	
-	private JButton moveCardTOBench;
-	private JButton moveCardTOAttackArea;
+	private JButton discardSizes;
+	private JButton discardsCardsButton;
 	private JButton endTurn ;
 	
 	
@@ -37,8 +37,8 @@ public class InfoView extends JPanel implements Coordinate  {
 		T_cardInfo = new JTextArea() ; 
 		T_communication = new JTextArea() ;
 		
-		moveCardTOBench = new JButton("Move Card To bench Area");
-		moveCardTOAttackArea = new JButton("Move Card TO Attack Area");
+		discardSizes = new JButton("Discard Cards Sizes");
+		discardsCardsButton = new JButton("Show Discards Cards");
 		endTurn = new JButton("End Turn");
 		
 		T_cardInfo.setFont(smallFont);
@@ -60,8 +60,8 @@ public class InfoView extends JPanel implements Coordinate  {
 	   	add(communication);
 		add(cardScroll);
 	   	add(communicationScroll);
-	   	add(moveCardTOBench);
-	   	add(moveCardTOAttackArea);
+	   	add(discardSizes);
+	   	add(discardsCardsButton);
 	   	add(endTurn);
 	   	
 	    //infoView.setViewLocation(1005 , 5, 200, 775 );
@@ -69,8 +69,8 @@ public class InfoView extends JPanel implements Coordinate  {
 	   	cardInfo.setBounds(5, 10 , 100 , 20);
 	   	cardScroll.setBounds(5, 50 , 185,270 );
 	   	
-	 	moveCardTOBench.setBounds(5 , 330, 180 , 30);
-	   	moveCardTOAttackArea.setBounds(5 , 370, 180, 30);
+	   	discardSizes.setBounds(5 , 330, 180 , 30);
+	   	discardsCardsButton.setBounds(5 , 370, 180, 30);
 	   	endTurn.setBounds(5 , 410, 180, 30);
 	   	
 	   	communication.setBounds(5,  450 , 100, 20);
@@ -85,12 +85,12 @@ public class InfoView extends JPanel implements Coordinate  {
 		return T_cardInfo;
 	}
 
-	public JButton getMoveCardTOBench() {
-		return moveCardTOBench;
+	public JButton getDiscardSizes() {
+		return discardSizes;
 	}
 
-	public JButton getMoveCardTOAttackArea() {
-		return moveCardTOAttackArea;
+	public JButton getDiscardsCardsButton() {
+		return discardsCardsButton ;
 	}
 
 	public JTextArea getT_communication() {

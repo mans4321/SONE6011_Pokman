@@ -8,6 +8,9 @@ package model;
  */
 import java.util.ArrayList;
 
+import model.ability.Search;
+import model.ability.Search.FILTER;
+
 public class CardCollection<T extends Card> {
 
     private ArrayList<T> cardCollection;   // The cards in the cardCollection.
@@ -35,7 +38,6 @@ public class CardCollection<T extends Card> {
     public void addCard(T c) {
         if (c == null)
             throw new NullPointerException("Can't add a null card to a cardCollection.");
-        c.setPosition(cardCollection.size());
         cardCollection.add(c);
     }
 
@@ -44,8 +46,8 @@ public class CardCollection<T extends Card> {
      * @param c the card to be removed.  If c is null or if the card is not in 
      * the cardCollection, then nothing is done.
      */
-    public void removeCard(T c) {
-        cardCollection.remove(c);
+    public void removeCard(T card) {
+        cardCollection.remove(card);
     }
 
     /**
@@ -61,10 +63,47 @@ public class CardCollection<T extends Card> {
             throw new IllegalArgumentException("Position does not exist in cardCollection: "
                     + position);
         cardCollection.remove(position);
-        for(int i = 0 ; i < cardCollection.size() ; i++)
-        	cardCollection.get(i).setPosition(i);
     }
 
+    
+    public ArrayList<Card> filiterCardBaseOnType(FILTER filter) {
+		ArrayList<Card> cards = new ArrayList<Card>();
+		if(filter.equals(Search.FILTER.BASICPOKEMON)){
+			for(Card card : cardCollection){
+				if(card.getType().equals(Card.CardType.POKEMON)){
+					Pokemon pokemon = (Pokemon) card;
+					if(pokemon.getP_Type().equals(Card.PokemonCategory.BASIC))
+						cards.add(card);
+				}
+			}
+			
+		}else if(filter.equals(Search.FILTER.ENERGY)){
+			for(Card card : cardCollection){
+				if(card.getType().equals(Card.CardType.ENERGY)){
+						cards.add(card);
+				}
+			}
+			
+		}else if(filter.equals(Search.FILTER.ITEM)){
+			for(Card card : cardCollection){
+				if(card.getType().equals(Card.CardType.TRAINER)){
+					Trainer trainer = (Trainer) card;
+					if(trainer.trainerCat.equals(Card.TrainerCategory.ITEM))
+						cards.add(card);
+				}
+		}
+			
+		}else if (filter.equals(Search.FILTER.POKEMON)){
+			for(Card card : cardCollection){
+				if(card.getType().equals(Card.CardType.POKEMON)){
+					cards.add(card);
+				}
+			}
+		}
+		return cards;
+	} 
+    
+    
     /**
      * Returns the number of cards in the cardCollection.
      */
@@ -78,11 +117,16 @@ public class CardCollection<T extends Card> {
      * @param position the position of the card that is to be returned
      * @throws IllegalArgumentException if position does not exist in the cardCollection
      */
-    public T getCard(int position) {
+    public  T getCard(int position) {
         if (position < 0 || position >= cardCollection.size())
             throw new IllegalArgumentException("Position does not exist in cardCollection: "
                     + position);
         return cardCollection.get(position);
+    }
+    
+    public  T getCard(T card) {
+    	int index = cardCollection.indexOf(card);
+        return cardCollection.get(index);
     }
     
     public void setCardAtPosition(int index , T card){
@@ -97,5 +141,8 @@ public class CardCollection<T extends Card> {
 		this.player = player;
 	}
     
+	public ArrayList<T> getArrayList(){
+		return cardCollection;
+	}
     
 }

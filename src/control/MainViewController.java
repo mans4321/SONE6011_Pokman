@@ -1,9 +1,5 @@
 package control;
 
-
-import javax.swing.*;
-
-import view.BaseWindow;
 import view.MainView;
 
 import java.awt.event.ActionEvent;
@@ -30,7 +26,7 @@ public class MainViewController {
             public void actionPerformed(ActionEvent e) {
                mainViewMenu.setVisible(false);
 //               new BaseWindow();
-              new GameEngine();
+              new GameEngine().getCoordinator().getBaseWindo().getWindow().setVisible(true);
                }
         });
     }

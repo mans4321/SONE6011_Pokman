@@ -10,7 +10,7 @@ import model.Card;
 import model.CardCollection;
 import model.Pokemon;
 
-public class BenchView extends JPanel implements Coordinate{
+public class BenchView extends JPanel implements CoordinateView{
 
     private CardCollection<Pokemon> cardCollection;       // The cards that have been dealt.
     private Font smallFont;    // Font that will be used to draw the cards.

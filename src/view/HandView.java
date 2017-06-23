@@ -12,7 +12,7 @@ import model.Deck;
 import model.CardCollection;
 
 
-public class HandView extends JPanel implements Coordinate {
+public class HandView extends JPanel implements CoordinateView {
 
 
 	private CardCollection<Card> cardCollection;       // The cards that have been dealt.

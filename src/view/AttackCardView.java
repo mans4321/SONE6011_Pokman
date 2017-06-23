@@ -8,39 +8,46 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
-import model.Attack;
 import model.Card;
 import model.Pokemon;
+import model.ability.AbilityCard;
 
-public class AttackCardView extends JPanel implements Coordinate {
+public class AttackCardView extends JPanel implements CoordinateView {
 
 	   
      private Pokemon card ;
      private Font smallFont;    // Font that will be used to draw the cards.
      private boolean player;
      private JButton attackButoon;
+     private JButton retreatButoon ;
+     private JButton swapButton;
   
-     private JComboBox<Attack> jComboBox ; 
+     private JComboBox<AbilityCard> jComboBox ; 
      
      public AttackCardView( boolean player){
     	 this.player = player ; 
     	 smallFont = new Font("SansSerif",Font.PLAIN, 14);
     	 setLayout(null);  
-
          inti();
 	   }
      
      void inti() {
     	 
     	 if(player){
-    		 jComboBox = new JComboBox<Attack>();
+    		 jComboBox = new JComboBox<AbilityCard>();
     		 attackButoon = new JButton("Attack");
+    		 retreatButoon = new JButton("Retreat ");
+    		 swapButton = new JButton("Swap");
 	    	
 	    	add(jComboBox);
 	    	add(attackButoon);
+	    	add(retreatButoon);
+	    	add(swapButton);
 	    	
-	    	jComboBox.setBounds(510, 40, 120, 20);
-	    	attackButoon.setBounds(510,70, 120, 20);
+	    	jComboBox.setBounds(510, 30, 120, 20);
+	    	attackButoon.setBounds(510,55, 120, 20);
+	    	retreatButoon.setBounds(280,30, 120, 20);
+	    	swapButton.setBounds(280,55, 120, 20);
     	 }
      } 
 
@@ -90,9 +97,9 @@ public class AttackCardView extends JPanel implements Coordinate {
  		public void setCard(Pokemon card) {
  			this.card = card;
  			if(this.card != null && player){
-	 			Attack [] attackList = new Attack[card.getAttakcs().size()] ;
-	 			this.card.getAttakcs().toArray(attackList);
-	 			jComboBox.setModel(new JComboBox<Attack>(attackList).getModel());
+ 				AbilityCard [] abilityList = new AbilityCard[card.getAbilityCards().size()] ;
+	 			this.card.getAbilityCards().toArray(abilityList);
+	 			jComboBox.setModel(new JComboBox<AbilityCard>(abilityList).getModel());
  			}
  		}
  		
@@ -130,13 +137,22 @@ public class AttackCardView extends JPanel implements Coordinate {
 		this.attackButoon = attackButoon;
 	}
 
-	public JComboBox<Attack> getjComboBox() {
+	public JComboBox<AbilityCard> getjComboBox() {
 		return jComboBox;
 	}
 
-	public void setjComboBox(JComboBox<Attack> jComboBox) {
+	public void setjComboBox(JComboBox<AbilityCard> jComboBox) {
 		this.jComboBox = jComboBox;
 	}
+
+	public JButton getRetreatButoon() {
+		return retreatButoon;
+	}
+
+	public JButton getSwapButton() {
+		return swapButton;
+	}
+
 	
 
 	
